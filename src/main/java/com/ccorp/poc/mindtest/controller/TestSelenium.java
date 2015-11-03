@@ -9,7 +9,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class TestSelenium {
     public static void main(String[] args) {
-        new FirefoxDriver();
+//        new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "/Users/chuck/Documents/chromedriver/chromedriver");
         WebDriver webDriver = new ChromeDriver();
         webDriver.get("http://www.baidu.com");
         webDriver.quit();
