@@ -5,6 +5,7 @@
 $(document).ready(function(){
     var appendWSContent = function(frame){
         console.log(frame);
+        $('#wscontent').append('<div>'+frame.body+'</div>');
     }
     var socket = new SockJS("/mindtest/ws");
     var stompClient = Stomp.over(socket);
@@ -19,8 +20,20 @@ $(document).ready(function(){
     buttonClicked = function(){
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/mindtest/test",
+            url: "http://10.249.74.134:8080/mindtest/test",
             contentType: "application/json",
+            success: function(){
+                console.log("success");
+            }
+        })
+    }
+
+    inputClicked = function(){
+        $.ajax({
+            type: "POST",
+            url: "http://10.249.74.134:8080/mindtest/chat",
+            contentType: "text/plain",
+            data: $("#chatinput").val(),
             success: function(){
                 console.log("success");
             }

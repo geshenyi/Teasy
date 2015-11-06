@@ -14,7 +14,12 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/spring-mvc-context.xml</param-value>
         </init-param>
+        <init-param>
+            <param-name>dispatchOptionsRequest</param-name>
+            <param-value>true</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>

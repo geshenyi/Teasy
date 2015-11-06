@@ -1,25 +1,28 @@
 {
-  "name": "MindTest",
-  "version": "0.0.0",
-  "homepage": "https://github.com/geshenyi/MindTest",
-  "authors": [
-    "Chuck Ge <ssge@ebay.com>"
-  ],
-  "moduleType": [
-    "es6"
-  ],
-  "license": "MIT",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "sockjs-client": "latest",
-    "jquery": "latest",
-    "stomp-websocket": "latest"
-  }
+    "name": "MindTest",
+    "version": "0.0.0",
+    "homepage": "https://github.com/geshenyi/MindTest",
+    "authors": [
+        "Chuck Ge <ssge@ebay.com>"
+    ],
+    "moduleType": [
+        "es6"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "sockjs-client": "latest",
+        "jquery": "latest",
+        "lodash": "3.10.1",
+        "stomp-websocket": "latest",
+        "backbone": "~1.2.3",
+        "semantic-ui": "latest"
+    }
 }

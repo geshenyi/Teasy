@@ -3,16 +3,23 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/sockjs-client/dist/sockjs-1.0.3.js"></script>
-    <script src="bower_components/stomp-websocket/lib/stomp.js"></script>
-    <script src="js/main.js"></script>
+
 </head>
 <body>
-    If you see me, you win!!
-    <div id="wscontent">
+If you see me, you win!!
+<div id="wscontent">
 
-    </div>
-    <button onclick="buttonClicked()">PLAY</button>
+</div>
+<div>
+    <input type="text" id="chatinput"/>
+</div>
+<button onclick="inputClicked()">SEND</button>
+<button onclick="buttonClicked()">PLAY</button>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/sockjs-client/dist/sockjs-1.0.3.js"></script>
+<script src="bower_components/stomp-websocket/lib/stomp.js"></script>
+<script src="js/main.js"></script>
+<script src="js/uuid.js"></script>
+
 </body>
 </html>
