@@ -1,4 +1,4 @@
-package com.ccorp.poc.mindtest.controller;
+package com.ccorp.poc.mindtest.interceptor;
 /**
  * 
  */

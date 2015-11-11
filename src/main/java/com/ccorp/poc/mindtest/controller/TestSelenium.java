@@ -24,7 +24,9 @@ public class TestSelenium {
 //                        null != input.findElement(By.id("header-sign-in"))
 //        );
         WebElement webElement = webDriver.findElement(By.id("header-sign-in"));
-        actions.moveToElement(webElement).moveToElement(webDriver.findElement(By.id("myhub"))).click().build().perform();
+        actions.moveToElement(webElement).build().perform();
+        WebElement myhub = webDriver.findElement(By.id("myhub"));
+        myhub.click();
         new WebDriverWait(webDriver, 60).until((WebDriver input) ->
             null != input.findElement(By.id("email-id"))
         );
@@ -34,7 +36,9 @@ public class TestSelenium {
         passwordIdInput.sendKeys("abcd1234");
         File srcFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(srcFile, new File("C:\\screenshot.png"));
-        passwordIdInput.submit();
+        WebElement submitButton = webDriver.findElement(By.className("auth-button"));
+        submitButton.click();
+//        passwordIdInput.submit();
 
 //        webElement.click();
 //        webElement.cli

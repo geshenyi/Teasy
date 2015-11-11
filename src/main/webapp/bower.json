@@ -23,6 +23,7 @@
         "lodash": "3.10.1",
         "stomp-websocket": "latest",
         "backbone": "~1.2.3",
-        "semantic-ui": "latest"
+        "semantic-ui": "latest",
+        "requirejs": "latest"
     }
 }

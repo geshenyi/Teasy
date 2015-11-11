@@ -3,23 +3,208 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link href='css/roboto.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet/less" href="bower_components/codemirror/lib/codemirror.css"/>
+    <link rel="stylesheet" href="css/pure/pure.css"/>
+    <link rel="stylesheet" href="js/bootmetro/dist/assets/css/bootmetro.css"/>
+    <link rel="stylesheet" href="js/bootmetro/dist/assets/css/bootmetro-icons.css"/>
+    <link rel="stylesheet" href="js/bootmetro/dist/assets/css/bootmetro-ui-light.css"/>
+    <link rel="stylesheet/less" href="css/main.less"/>
+    <link rel="stylesheet/less" href="css/page.less"/>
+    <link rel="stylesheet/less" href="css/compose-test.less"/>
 
+    <!--<link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.css"/>-->
 </head>
-<body>
-If you see me, you win!!
-<div id="wscontent">
+<body class="panorama-parallax" id="teasy-app">
+<div id="pages-div">
+
+</div>
+<div id="flows-div">
+
+</div>
+<div id="compose-test-div">
 
 </div>
 <div>
-    <input type="text" id="chatinput"/>
+    <div id="nav-bar">
+        <div class="pure-g">
+            <div class="pure-u-1-3">
+                <div id="app-name-div">
+                    <div id="app-name">Teasy</div>
+                    <div id="app-desc">Make Test Easy</div>
+                </div>
+            </div>
+            <div class="pure-u-2-3">
+                <div id="action-div">
+                    <div id="username">Chuck Ge</div>
+                    <a id="user" href="#" class="win-command">
+                        <span class="win-commandicon win-commandring  icon-user-5"></span>
+                    </a>
+                    <a id="setting" href="#" class="win-command">
+                        <span class="win-commandicon win-commandring icon-cog-3"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="metro panorama" style="height: 544px;">
+        <div class="panorama-sections" style="width: 2390px; height: 642px; margin-left: 0px;">
+
+            <div class="panorama-section">
+
+                <h2>Test Summay</h2>
+
+                <!--<a class="tile widepeek" href="#">-->
+                <!--<div class="tile wide image">-->
+                <!--<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Darvasa_gas_crater_panorama.jpg/640px-Darvasa_gas_crater_panorama.jpg" alt=""/>-->
+                <!--</div>-->
+                <!--<div class="tile wide text bg-color-orange">-->
+                <!--<div class="text5">The Door to Hell, a burning natural gas field in Derweze, Turkmenistan</div>-->
+                <!--</div>-->
+                <!--</a>-->
+
+                <div class="">
+                    <div style="" class="bg-color-orange" id="test-summary-div">
+                        <img src="image/diagram3.png">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panorama-section">
+
+                <h2>Statistics</h2>
+
+                <div class="tile-column-span-2">
+                    <a class="tile widepeek" href="#">
+                        <div class="tile wide image">
+                            <img src="image/diagram1.png" alt="" style="height: 100%">
+                        </div>
+                        <div class="tile wide text">
+                            <div class="text-header">Execution Statistics</div>
+                            <div class="text4">You wanna see me? Then embody me...</div>
+                        </div>
+                    </a>
+
+                    <a class="tile wide imagetext wideimage bg-color-green" href="#">
+                        <img src="image/diagram2.png" alt="">
+                        <div class="textover-wrapper transparent">
+                            <div class="text2">Place Holder</div>
+                        </div>
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="panorama-section tile-span-4">
+
+                <h2>Components</h2>
+
+                <a class="tile app bg-color-orange" href="#" id="flows">
+                    <div class="image-wrapper">
+                        <span class="icon  icon-flow-line"></span>
+                    </div>
+                    <div class="app-label">Flow</div>
+                    <div class="app-count">12</div>
+                </a>
+
+                <a class="tile app bg-color-blue" href="#" id="pages">
+                    <div class="image-wrapper">
+                        <span class="icon icon-map"></span>
+                    </div>
+                    <div class="app-label">Page</div>
+                </a>
+
+                <a class="tile wide imagetext" href="#" id="compose-test">
+                    <div class="image-wrapper">
+                        <span class="icon icon-pencil-6"></span>
+                    </div>
+                    <div class="column-text">
+                        <div class="text4">Write A Test</div>
+                    </div>
+                    <!--<div class="app-label">145 friends online</div>-->
+                </a>
+
+                <a class="tile app bg-color-purple" href="#">
+                    <div class="image-wrapper">
+                        <span class="icon icon-docs"></span>
+                    </div>
+                    <div class="app-label">Tests</div>
+                    <div class="app-count">120</div>
+                </a>
+
+                <a class="tile app bg-color-green" href="#">
+                    <div class="image-wrapper">
+                        <span class="icon icon-linkedin"></span>
+                    </div>
+                    <div class="app-label">LinkedIn</div>
+                </a>
+
+            </div>
+
+            <div class="panorama-section tile-span-4">
+
+                <h2>Group two</h2>
+
+                <a class="tile wide imagetext bg-color-blue" href="#">
+                    <div class="image-wrapper">
+                        <span class="icon icon-plus"></span>
+                    </div>
+                    <div class="column-text">
+                        <div class="text">Placeholder</div>
+                        <div class="text">Placeholder</div>
+                        <div class="text">Placeholder</div>
+                    </div>
+                    <span class="app-label">Placeholder</span>
+                </a>
+
+                <a class="tile wide imagetext bg-color-blueDark" href="./base-css.html">
+                    <div class="image-wrapper">
+                        <span class="icon  icon-download"></span>
+                    </div>
+                    <div class="column-text">
+                        <div class="text">Placeholder</div>
+                        <div class="text">Placeholder</div>
+                        <div class="text">Placeholder</div>
+                        <div class="text">Placeholder</div>
+                    </div>
+                    <span class="app-label">BASE CSS</span>
+                </a>
+
+                <a class="tile app bg-color-orange" href="#">
+                    <div class="image-wrapper">
+                        <span class="icon   icon-stack"></span>
+                    </div>
+                    <span class="app-label">COMPONENTS</span>
+                </a>
+
+                <a class="tile app bg-color-red" href="./javascript.html">
+                    <div class="image-wrapper">
+                        <span class="icon icon-console"></span>
+                    </div>
+                    <span class="app-label">JAVASCRIPT</span>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+
 </div>
-<button onclick="inputClicked()">SEND</button>
-<button onclick="buttonClicked()">PLAY</button>
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/sockjs-client/dist/sockjs-1.0.3.js"></script>
-<script src="bower_components/stomp-websocket/lib/stomp.js"></script>
-<script src="js/main.js"></script>
-<script src="js/uuid.js"></script>
+
+<script src="js/less/less.js"></script>
+<script data-main="js/main" src="bower_components/requirejs/require.js"></script>
+<!--<script src="bower_components/jquery/dist/jquery.js"></script>-->
+<!--<script src="bower_components/sockjs-client/dist/sockjs-1.0.3.js"></script>-->
+<!--<script src="bower_components/stomp-websocket/lib/stomp.js"></script>-->
+<!--<script src="js/main.js"></script>-->
+<!--<script src="js/uuid.js"></script>-->
 
 </body>
 </html>
