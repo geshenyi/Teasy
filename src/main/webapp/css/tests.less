@@ -1,0 +1,38 @@
+#testcases {
+  padding: 20px;
+}
+
+.tests-command-bar {
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+//  background-color: #DD8CF9;
+}
+
+.fixed {
+  background-color: #DD8CF9;
+}
+
+.eachtest {
+  background-color: white!important;
+  color: black!important;
+  box-shadow: 1px 1px 1px 1px white!important;
+//  background-color: #C25BFF!important;
+  border: 5px solid white!important;
+  position: relative;
+  & .owner {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+  & .name {
+    font-weight: bold;
+  }
+}
+
+.tests-body {
+  overflow-y: scroll;
+  height: 100%;
+  margin-top: 100px;
+}

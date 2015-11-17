@@ -17,14 +17,22 @@
 
 #screenshot-area {
   height: 500px;
-  background-color: #1D1F20;
+//  background-color: black;
+  /* z-index: 4; */
+  position: relative;
+  top: 20px;
+  width: 725px;
+  left: 107px;
+  height: 465px;
+//  height: 500px;
+//  background-color: #1D1F20;
   & #loading-div {
     width: 100%;
     height: 100%;
     display: none;
   }
 
-  & #screenshot-div{
+  & #screenshot-div {
     width: 100%;
     height: 100%;
     display: none;
@@ -34,10 +42,10 @@
     position: relative;
     top: 40%;
     display: block;
-    left: 50%;
+    left: 45%;
   }
 
-  & #screenshot-div img{
+  & #screenshot-div img {
     display: block;
     width: 100%;
     height: 100%;
@@ -54,3 +62,64 @@
   color: white;
   overflow: scroll;
 }
+
+.confirm-dialog {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  position: absolute;
+  left: 35%;
+  top: -300px;
+  z-index: 3;
+  background: white;
+  width: 500px;
+  height: 200px;
+
+  & label {
+    display: inline-block;
+    color: #A2A2A2;
+  }
+
+  & input {
+    border: none;
+    border-bottom: 1px solid black!important;
+    margin-left: 20px;
+  }
+
+  & #dialog-name {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+}
+
+.confirm-dialog-show {
+  top: 300px;
+}
+
+#test-owner-div {
+  margin-top: 30px;
+  & select {
+    margin-left: 15px;
+    border: none;
+    border-bottom: 1px solid black!important;
+  }
+}
+
+.command-div {
+  margin-top: 30px;
+  text-align: right;
+
+  & .command {
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  & .command:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+  }
+}
+

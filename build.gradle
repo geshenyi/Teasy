@@ -11,10 +11,13 @@ configurations {
 }
 
 repositories {
-    maven {
-        url "https://mvnrepository.stubcorp.dev/nexus/content/groups/stubhub-public"
-    }
-//    jcenter()
+//    maven {
+//        url "https://mvnrepository.stubcorp.dev/nexus/content/groups/stubhub-public"
+//    }
+    jcenter()
+//    maven {
+//        url "http://repo.spring.io/libs-milestone"
+//    }
 //    mavenCentral()
 }
 
@@ -23,9 +26,11 @@ dependencies {
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-webmvc:$springVersion"
     compile "org.springframework:spring-orm:$springVersion"
+    compile "org.springframework.data:spring-data-mongodb:1.8.0.RELEASE"
     compile "org.hibernate:hibernate-core:5.0.1.Final"
     compile "org.springframework:spring-websocket:$springVersion"
     compile "org.springframework:spring-messaging:$springVersion"
+    compile "org.springframework:spring-test:$springVersion"
     compile "com.fasterxml.jackson.core:jackson-databind:2.5.3"
     compile "org.seleniumhq.selenium:selenium-java:2.48.2"
     provided "javax.servlet:servlet-api:2.5"

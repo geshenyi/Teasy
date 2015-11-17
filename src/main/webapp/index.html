@@ -11,18 +11,29 @@
     <link rel="stylesheet" href="js/bootmetro/dist/assets/css/bootmetro-ui-light.css"/>
     <link rel="stylesheet/less" href="css/main.less"/>
     <link rel="stylesheet/less" href="css/page.less"/>
+    <link rel="stylesheet/less" href="css/tests.less"/>
     <link rel="stylesheet/less" href="css/compose-test.less"/>
+    <link rel="stylesheet/less" href="css/component/toast.less"/>
+    <link rel="stylesheet/less" href="css/component/test-result.less"/>
 
     <!--<link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.css"/>-->
 </head>
 <body class="panorama-parallax" id="teasy-app">
-<div id="pages-div">
+
+<div id="toast-div">
 
 </div>
-<div id="flows-div">
+
+<div id="pages-div" class="overflow-scroll">
 
 </div>
-<div id="compose-test-div">
+<div id="flows-div" class="overflow-scroll">
+
+</div>
+<div id="compose-test-div" class="overflow-scroll">
+
+</div>
+<div id="tests-div" class="">
 
 </div>
 <div>
@@ -130,7 +141,7 @@
                     <!--<div class="app-label">145 friends online</div>-->
                 </a>
 
-                <a class="tile app bg-color-purple" href="#">
+                <a class="tile app bg-color-purple" href="#" id="tests">
                     <div class="image-wrapper">
                         <span class="icon icon-docs"></span>
                     </div>

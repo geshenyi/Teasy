@@ -1,3 +1,26 @@
+<div class="confirm-dialog pure-g padding-2point">
+    <div id="dialog-name" class="pure-u-1">Save Your Test</div>
+    <div id="test-name-div" class="pure-u-1">
+        <label>Test Name</label>
+        <input id="test-name-input" name="test-name-input"/>
+    </div>
+    <div id="test-owner-div" class="pure-u-1">
+        <label>Test Owner</label>
+        <select id="test-owner-select">
+            <option value="Jack">Jack</option>
+            <option value="James">James</option>
+            <option value="Jason">Jason</option>
+        </select>
+    </div>
+    <div class="command-div pure-u-1">
+        <div class="command display-inline-block" id="command-save">SAVE</div>
+        <div class="command display-inline-block margin-left-2" id="command-cancel">CANCEL</div>
+    </div>
+</div>
+
+<div id="result-dialog">
+</div>
+
 <div class="pure-g">
     <div class="pure-u-1 text-left">
         <a id="page-back" href="#" class="win-command">
@@ -12,6 +35,11 @@
                         <div class="pure-g">
                             <div class="pure-u-1-2 padding-top-2">Steps</div>
                             <div class="pure-u-1-2 text-align-right">
+                                <button class="win-command win-command-small" rel="tootlip" title="Save Script"
+                                        id="save-button">
+                                    <span class="win-commandicon win-commandring icon-disk"></span>
+                                    <span class="win-label">SAVE</span>
+                                </button>
                                 <button class="win-command win-command-small" rel="tootlip" title="Run Steps"
                                         id="run-button">
                                     <span class="win-commandicon win-commandring icon-play-6"></span>
@@ -25,15 +53,31 @@
             </div>
             <div class="pure-u-1-2 padding-top-2">
                 <div class="content-area">
-                    <div class="text-color-white steps-label">Screen Shots</div>
-                    <div id="screenshot-area">
-                        <div id="loading-div">
-                            <img src="image/gears.gif" id="loading-gif">
+                    <div>
+                        <div class="position-absolute">
+                            <img src="image/mac.png" width="1000px">
                         </div>
-                        <div id="screenshot-div">
-                            <img src=""/>
+                        <div id="screenshot-area">
+                            <div id="loading-div">
+                                <img src="image/gears.gif" id="loading-gif">
+                            </div>
+                            <div id="screenshot-div">
+                                <img src=""/>
+                            </div>
                         </div>
                     </div>
+                    <!--<div class="text-color-white steps-label">Screen Shots</div>-->
+                    <!--<div id="screenshot-area">-->
+                    <!--<div>-->
+                    <!--<img src="image/mac-lcd-screen.png" width="800px">-->
+                    <!--</div>-->
+                    <!--<div id="loading-div">-->
+                    <!--<img src="image/gears.gif" id="loading-gif">-->
+                    <!--</div>-->
+                    <!--<div id="screenshot-div">-->
+                    <!--<img src=""/>-->
+                    <!--</div>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd
+       http://www.springframework.org/schema/data/mongo
+          http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd   
+       http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <import resource="mongodb-config.xml"/>
+    <context:property-placeholder location="classpath:*.properties"/>
+    <context:component-scan base-package="com.ccorp.poc.mindtest.controller"/>
+    <context:component-scan base-package="com.ccorp.poc.mindtest.parser"/>
+    <context:component-scan base-package="com.ccorp.poc.mindtest.command"/>
+    <context:component-scan base-package="com.ccorp.poc.mindtest.service"/>
+    <context:component-scan base-package="com.ccorp.poc.mindtest.repository"/>
+    <mvc:annotation-driven enable-matrix-variables="true"/>
+
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/screenshot/**" location="/screenshot/"/>
+    <mvc:resources mapping="/**" location="/"/>
+
+    <mvc:interceptors>
+        <bean class=" com.ccorp.poc.mindtest.interceptor.AccessControlAllowInterceptor"/>
+    </mvc:interceptors>
+    <!--<mvc:resources mapping="/scripts/**" location="/scripts/" />-->
+    <!--<mvc:resources mapping="/styles/**" location="/styles/" />-->
+
+    <websocket:message-broker application-destination-prefix="/app">
+        <websocket:stomp-endpoint path="/ws">
+            <websocket:sockjs/>
+        </websocket:stomp-endpoint>
+        <websocket:simple-broker prefix="/topic"/>
+    </websocket:message-broker>
+
+    <util:properties id="commandProps" location="classpath:command.properties"/>
+    <mongo:mongo host="${mongo.host}" port="${mongo.port}">
+        <mongo:options connections-per-host="${mongo.connectionsPerHost}"
+                       threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+                       connect-timeout="${mongo.connectTimeout}"
+                       max-wait-time="${mongo.maxWaitTime}"
+                       auto-connect-retry="${mongo.autoConnectRetry}"
+                       socket-keep-alive="${mongo.socketKeepAlive}"
+                       socket-timeout="${mongo.socketTimeout}"
+                       slave-ok="${mongo.slaveOk}"
+                       write-number="${mongo.writeNumber}"
+                       write-timeout="${mongo.writeTimeout}"
+                       write-fsync="${mongo.writeFsync}"/>
+    </mongo:mongo>
+
+    <mongo:db-factory dbname="teasy" mongo-ref="mongo"/>
+
+    <mongo:repositories base-package="com.ccorp.poc.mindtest.repository"/>
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+    </bean>
+</beans>

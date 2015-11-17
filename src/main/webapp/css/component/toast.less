@@ -1,0 +1,42 @@
+#toast-div {
+  position: absolute;
+  right: 0;
+  top: -100px;
+  z-index: 10;
+}
+
+.show-toast-div {
+  animation: show-toast 10s;
+}
+
+@keyframes show-toast {
+  0% {
+    top: -100px;
+  }
+  20% {
+    top: 0px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.content {
+  padding-top: 5px;
+}
+
+#success-toast {
+  width: 300px;
+  background-color: #17B085;
+  color: white;
+  font-size: 1rem;
+  .content;
+}
+
+#fail-toast {
+  width: 300px;
+  background-color: rgb(231, 45, 63);
+  color: white;
+  font-size: 1rem;
+  .content;
+}

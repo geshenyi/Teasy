@@ -1,0 +1,62 @@
+<% if(status == 'fail'){ %>
+<div class="pure-g fail">
+<% }else{ %>
+<div class="pure-g pass">
+<% } %>
+    <div class="pure-u-1-2">
+        <div id="dialog-title" >
+            Test Result
+        </div>
+    </div>
+    <div class="pure-u-1-2 text-align-right">
+        <a id="test-result-closer" href="#" class="win-command">
+            <span class="win-commandicon win-commandring icon-back"></span>
+        </a>
+    </div>
+    <div class="pure-u-1-2">
+        <div class="test-info-div">
+            <div class="padding-2point text-bold">
+                Test Info
+            </div>
+            <div class="padding-3point">
+                <div class="test-info-line">
+                    <span class="label">Name:</span> <%= name %>
+                </div>
+                <div class="test-info-line">
+                    <span class="label">Owner:</span> <%= owner %>
+                </div>
+                <div class="test-info-line pure-g">
+                    <div class="pure-u-1-3"><span class="label">Total Steps:</span> <%= statistic.totalSteps %></div>
+                    <div class="pure-u-1-3"><span class="label">Executed:</span> <%= statistic.executedSteps %></div>
+                </div>
+                <div class="test-info-line pure-g">
+                    <div class="pure-u-1-3"><span class="label">Total Verification:</span> <%=
+                        statistic.totalVerification %>
+                    </div>
+                    <div class="pure-u-1-3"><span class="label">Passed:</span> <%= statistic.passedVerificatin %></div>
+                    <div class="pure-u-1-3"><span class="label">Failed:</span> <%= statistic.failedVerification %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pure-u-1-2">
+        <div class="test-info-div">
+            <div class="padding-2point text-bold">
+                Steps
+            </div>
+            <div class="overflow-scroll-y" id="test-steps-div">
+                <%= steps%>
+            </div>
+        </div>
+    </div>
+    <div class="pure-u-1" id="test-result-div">
+        <div class="padding-2point">
+            <div class="text-bold">
+                Result
+            </div>
+        </div>
+        <div class="padding-2point overflow-scroll-y" id="test-result">
+            <%= results%>
+        </div>
+    </div>
+</div>

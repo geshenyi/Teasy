@@ -1,5 +1,20 @@
+@fail-bg-color: rgb(255, 144, 144);
+@pass-bg-color: rgb(73, 197, 110);
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
 .text-color-white {
   color: white;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 .text-align-right {
@@ -14,6 +29,23 @@
   margin-top: 1%;
 }
 
+.margin-left-1 {
+  margin-left: 1%;
+}
+
+.margin-left-2 {
+  margin-left: 2%;
+}
+
+.margin-2point {
+  margin: 2%;
+}
+
+.margin-3point {
+  margin: 3%;
+}
+
+
 .padding-top-1 {
   padding-top: 1%;
 }
@@ -22,6 +54,34 @@
   padding-top: 2%;
 }
 
+.padding-2point {
+  padding: 2%;
+}
+
+.padding-3point {
+  padding: 3%;
+}
+
+.padding-5point {
+  padding: 5%;
+}
+
+.border-1px-black-bottom {
+  border: none;
+  border-bottom: 1px solid black!important;
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.overflow-scroll-x {
+  overflow-x: scroll;
+}
+
+.overflow-scroll-y {
+  overflow-y: scroll;
+}
 
 body {
   background-image: url('../image/background-image.jpg');
@@ -30,6 +90,12 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+}
+
+#alerts-container {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 #app-name-div {
@@ -98,6 +164,11 @@ body {
   background-color: rgb(31, 31, 31) !important
 }
 
+#tests-div {
+  background-color: rgba(123, 79, 157, 0.93);
+  .page-content;
+}
+
 .pages-div-show {
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
@@ -107,6 +178,17 @@ body {
   visibility: visible !important;
   opacity: 1 !important;
   z-index: 2!important;
+}
+
+.composetest-div-show {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 3!important;
 }
 
 .CodeMirror-cursor {
@@ -123,4 +205,8 @@ body {
 
 button.win-command .win-label {
   color: white;
+}
+
+.command-bar{
+
 }

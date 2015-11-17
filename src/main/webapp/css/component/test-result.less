@@ -1,0 +1,62 @@
+@fail-bg-color: rgb(255, 144, 144);
+@pass-bg-color: rgb(73, 197, 110);
+
+#result-dialog {
+  width: 1000px;
+  height: 800px;
+  //  background-color: white;
+  left: 20%;
+  position: absolute;
+  top: -1000px;
+  z-index: 1;
+  transition: all 2s ease;
+
+  & #dialog-title {
+    margin: 3%;
+    font-size: 2rem;
+    color: white;
+  }
+
+  & .test-info-div {
+    margin: 7%;
+    height: 200px;
+    box-shadow: 1px 1px 1px 1px #E8E6E6;
+    background-color: white;
+  }
+
+  & .test-info-line {
+    margin-top: 10px;
+  }
+
+  & .label {
+    color: white;
+  }
+
+  & #test-steps-div {
+    height: 165px;
+    padding-left: 10px;
+  }
+
+  & #test-result-div {
+    background-color: white;
+    height: 400px;
+    margin: 0 3% 0 3%;;
+  }
+
+  & #test-result {
+    height: 300px;
+  }
+
+}
+
+.show-result-dialog {
+  top: 10%!important;
+}
+
+.fail {
+  background-color: @fail-bg-color;
+}
+
+.pass {
+  background-color: @pass-bg-color;
+}

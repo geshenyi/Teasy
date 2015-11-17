@@ -2,6 +2,7 @@ package com.ccorp.poc.mindtest.command;
 
 import com.ccorp.poc.mindtest.exception.CommandParamNotMatchException;
 import com.ccorp.poc.mindtest.model.domain.ScriptExecutionContext;
+import com.ccorp.poc.mindtest.model.domain.result.TestResult;
 import com.ccorp.poc.mindtest.utility.PathUtil;
 import com.google.common.collect.Lists;
 import org.apache.commons.io.FileUtils;
@@ -20,16 +21,22 @@ import java.util.regex.Pattern;
  */
 public interface ICommand {
 
+    public String getScript();
+    public String getLog();
     public void constructCommand(String script);
-    public void execute(WebDriver webDriver, ScriptExecutionContext context);
+    public void execute(WebDriver webDriver, ScriptExecutionContext context, TestResult testResult);
     public int getParamsCount();
-    public default void afterAction(WebDriver webDriver, ScriptExecutionContext context){
+
+    public default String takeSnapShot(WebDriver webDriver, ScriptExecutionContext context){
         File srcFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(srcFile, new File(context.getPath()+"/"+this.toString()+".png"));
-            context.getWebSocketService().notify("/topic/image/"+context.getUuid(), PathUtil.getLastSegmentInPath(context.getPath())+"/"+this.toString()+".png");
+            String screenShotPath = PathUtil.getLastSegmentInPath(context.getPath())+"/"+this.toString()+".png";
+            context.getWebSocketService().notify("/topic/image/"+context.getUuid(), screenShotPath);
+            return screenShotPath;
         } catch (IOException e) {
             e.printStackTrace();
+            return "";
         }
     }
     public default ArrayList<String> extractParams(String script){

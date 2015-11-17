@@ -1,12 +1,16 @@
 package com.ccorp.poc.mindtest.controller;
 
 import com.ccorp.poc.mindtest.command.Commander;
+import com.ccorp.poc.mindtest.model.domain.Test;
+import com.ccorp.poc.mindtest.model.domain.result.TestResult;
 import com.ccorp.poc.mindtest.model.webinput.PlainTestScript;
+import com.ccorp.poc.mindtest.repository.TestRepository;
 import com.ccorp.poc.mindtest.service.WebSocketService;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -27,6 +31,9 @@ public class TestController {
 
     @Value("#{commandProps}")
     private Properties commandProps;
+
+    @Autowired
+    private TestRepository testRepository;
 
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
@@ -60,19 +67,32 @@ public class TestController {
 
     @RequestMapping(value="/single/run", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<String> runSingleTest(@RequestBody PlainTestScript plainScript){
+    public ResponseEntity<TestResult> runSingleTest(@RequestBody PlainTestScript plainScript){
 
         System.setProperty("webdriver.chrome.driver", "c:/chromedriver.exe");
         webSocketService.notify("/topic/"+plainScript.getUuid(), "Script received");
+        TestResult result = null;
         try{
-            commander.dictate(plainScript.getSteps(),commandProps, plainScript.getUuid(), context.getRealPath("") + "\\screenshot\\" + plainScript.getUuid());
+            result = commander.dictate(plainScript.getSteps(), commandProps, plainScript.getUuid(),
+                    context.getRealPath("") + "\\screenshot\\" + plainScript.getUuid());
         }catch(Exception e){
             webSocketService.notify("/topic/"+plainScript.getUuid(), ExceptionUtils.getStackTrace(e));
             e.printStackTrace();
-            return new ResponseEntity<>("fail", org.springframework.http.HttpStatus.OK);
+            return new ResponseEntity<>(result, org.springframework.http.HttpStatus.OK);
         }
-        return new ResponseEntity<>("success", org.springframework.http.HttpStatus.OK);
+        return new ResponseEntity<>(result, org.springframework.http.HttpStatus.OK);
 
 
+    }
+
+    @RequestMapping(method=RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<String> createTest(@RequestBody Test test){
+        try {
+            testRepository.save(test);
+        }catch(Exception e){
+            return new ResponseEntity<String>("fail", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("success", HttpStatus.OK);
     }
 }

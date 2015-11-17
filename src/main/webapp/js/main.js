@@ -60,9 +60,9 @@ require.config({
             exports: 'jQueryMouseWheel'
         },
         'bootstrap': {
-//            deps: [
-//                'jquery'
-//            ],
+            deps: [
+                'jquery'
+            ],
             exports: 'Bootstrap'
         }
 
