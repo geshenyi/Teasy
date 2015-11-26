@@ -52,7 +52,7 @@ public abstract class BaseCommand implements ICommand{
     }
 
 
-    protected abstract void executeSpecificCommand(WebDriver webDriver, ScriptExecutionContext context, TestStep testStep);
+    protected abstract void executeSpecificCommand(WebDriver webDriver, ScriptExecutionContext context, TestStep testStep) throws InterruptedException;
 
     @Override
     abstract public int getParamsCount();

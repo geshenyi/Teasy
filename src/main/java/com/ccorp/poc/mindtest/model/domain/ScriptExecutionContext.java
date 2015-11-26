@@ -1,5 +1,6 @@
 package com.ccorp.poc.mindtest.model.domain;
 
+import com.ccorp.poc.mindtest.service.FlowService;
 import com.ccorp.poc.mindtest.service.WebSocketService;
 
 /**
@@ -7,10 +8,12 @@ import com.ccorp.poc.mindtest.service.WebSocketService;
  */
 public class ScriptExecutionContext {
     private WebSocketService webSocketService;
+    private FlowService flowService;
     private String path;
     private String uuid;
 
-    public ScriptExecutionContext(WebSocketService webSocketService, String path, String uuid) {
+    public ScriptExecutionContext(FlowService flowService, WebSocketService webSocketService, String path, String uuid) {
+        this.flowService = flowService;
         this.webSocketService = webSocketService;
         this.path = path;
         this.uuid = uuid;
@@ -38,5 +41,13 @@ public class ScriptExecutionContext {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public FlowService getFlowService() {
+        return flowService;
+    }
+
+    public void setFlowService(FlowService flowService) {
+        this.flowService = flowService;
     }
 }

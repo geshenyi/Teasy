@@ -40,7 +40,7 @@ public class HoverOverCommand extends BaseCommand {
 //    }
 
     @Override
-    protected void executeSpecificCommand(WebDriver webDriver, ScriptExecutionContext context, TestStep testStep) {
+    protected void executeSpecificCommand(WebDriver webDriver, ScriptExecutionContext context, TestStep testStep) throws InterruptedException {
         WebSocketBroadcaster.broadcast(context.getWebSocketService(), "/topic/"+context.getUuid(), "Mouse over on element " + elementIdentifier + " by " + by.toString());
         testStep.addLog("Mouse over on element " + elementIdentifier + " by " + by.toString());
         Actions actions = new Actions(webDriver);

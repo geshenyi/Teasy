@@ -33,10 +33,12 @@ public class OpenUrlCommand extends BaseCommand{
 //    }
 
     @Override
-    protected void executeSpecificCommand(WebDriver webDriver, ScriptExecutionContext context, TestStep testStep) {
+    protected void executeSpecificCommand(WebDriver webDriver, ScriptExecutionContext context, TestStep testStep) throws InterruptedException {
         WebSocketBroadcaster.broadcast(context.getWebSocketService(), "/topic/"+context.getUuid(), "open web page " + url);
         testStep.addLog("open web page " + url);
         webDriver.get(url);
+        webDriver.manage().window().maximize();
+//        Thread.currentThread().sleep(2000);
     }
 
     @Override

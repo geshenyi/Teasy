@@ -1,8 +1,9 @@
 /**
  * Created by ssge on 2015/11/8.
  */
-define(['jquery', 'backbone', 'underscore', 'text!../../template/compose-test.html', 'codemirror', 'sockjs', 'stompjs', 'uuid', 'model/test', 'views/component/test-result'],
-    function ($, Backbone, _, composeTestHtml, CodeMirror, SockJS, Stomp, UUID, TestModel, TestResultView) {
+define(['jquery', 'backbone', 'underscore', 'text!../../template/compose-test.html', 'codemirror', 'codemirror/addon/edit/matchbrackets'
+        , 'codemirror/addon/mode/simple', 'sockjs', 'stompjs', 'uuid', 'model/test', 'model/flow', 'views/component/test-result', 'constant/keyword'],
+    function ($, Backbone, _, composeTestHtml, CodeMirror, CodeMirrorMatchBracket, CodeMirrorSimple, SockJS, Stomp, UUID, TestModel, FlowModel, TestResultView, Keyword) {
         var ComposeTestView = Backbone.View.extend({
             el: $('#compose-test-div'),
             template: _.template(composeTestHtml),
@@ -11,7 +12,8 @@ define(['jquery', 'backbone', 'underscore', 'text!../../template/compose-test.ht
                 'click #run-button': 'runTest',
                 'click #save-button': 'saveTest',
                 'click #command-save': 'confirmSave',
-                'click #command-cancel': 'cancelSave'
+                'click #command-cancel': 'cancelSave',
+                'click #command-save-flow': 'saveFlow'
             },
             initialize: function () {
                 console.log('Model=' + JSON.stringify(this.model));
@@ -20,9 +22,22 @@ define(['jquery', 'backbone', 'underscore', 'text!../../template/compose-test.ht
             },
             render: function () {
                 this.$el.html(this.template());
-                this.myCodeMirror = CodeMirror(document.getElementById("script-area"), {
-                    lineNumbers: true
+
+                CodeMirror.defineSimpleMode('testmode', {
+                    start: Keyword
                 });
+
+                this.myCodeMirror = CodeMirror(document.getElementById("script-area"), {
+                    lineNumbers: true,
+                    matchBrackets: true,
+                    mode: 'testmode'
+                });
+
+
+                this.myCodeMirror.on('change', function () {
+                    console.log('change');
+                });
+
                 this.$('#test-name-input').val(this.model.get('name'));
                 this.$('#test-owner-select').val(this.model.get('owner'));
                 this.myCodeMirror.setValue(this.model.get('script'));
@@ -57,6 +72,23 @@ define(['jquery', 'backbone', 'underscore', 'text!../../template/compose-test.ht
                         owner: owner
                     });
                     toSaveTestModel.save([], {success: this.testCallback, error: this.errorCallback});
+                }
+                this.confirmDialog.removeClass('confirm-dialog-show');
+            },
+            saveFlow: function () {
+                var name = this.$('#test-name-input').val();
+                var owner = this.$("#test-owner-select").val();
+                var script = this.myCodeMirror.getValue();
+                if (typeof this.model != 'undefined' && typeof this.model.get("id") != 'undefined') {
+                    this.model.set({name: name, owner: owner, script: script});
+                    this.model.save([], {success: this.testCallback});
+                } else {
+                    var toSaveFlowModel = new FlowModel({
+                        script: script,
+                        name: name,
+                        owner: owner
+                    });
+                    toSaveFlowModel.save([], {success: this.testCallback, error: this.errorCallback});
                 }
                 this.confirmDialog.removeClass('confirm-dialog-show');
             },

@@ -5,7 +5,9 @@ import com.ccorp.poc.mindtest.model.domain.WebSocketBroadcaster;
 import com.ccorp.poc.mindtest.model.domain.result.TestStep;
 import com.ccorp.poc.mindtest.utility.ByFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 
@@ -39,7 +41,17 @@ public class ClickCommand extends BaseCommand{
     protected void executeSpecificCommand(WebDriver webDriver, ScriptExecutionContext context, TestStep testStep) {
         WebSocketBroadcaster.broadcast(context.getWebSocketService(), "/topic/"+context.getUuid(), "Click on element " + elementIdentifier + " by " + by.toString());
         testStep.addLog("Click on element " + elementIdentifier + " by " + by.toString());
-        webDriver.findElement(by).click();
+//        webDriver.findElement(by).click();
+        WebElement element = webDriver.findElement(by);
+        simulateClick(webDriver, element);
+    }
+
+    public void simulateClick(WebDriver driver, WebElement element) {
+        String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(mouseOverScript, element);
+        String clickScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('click', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onclick');}";
+        js.executeScript(clickScript, element);
     }
 
     @Override

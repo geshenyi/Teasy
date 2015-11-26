@@ -10,5 +10,5 @@ import java.util.Properties;
  * Created by ssge on 2015/11/10.
  */
 public interface IParser {
-    public List<ICommand> parseScripts(TestScript testScript, Properties properties) throws ClassNotFoundException, IllegalAccessException, InstantiationException;
+    public List<ICommand> parseScripts(TestScript plainScript, Properties properties) throws ClassNotFoundException, IllegalAccessException, InstantiationException;
 }

@@ -10,10 +10,12 @@ public class ByFactory {
         By by = null;
         switch (byType) {
             case "id":
-                by = By.id(identifier);
+//                by = By.id(identifier);
+                by = By.xpath("//*[@id='" + identifier +"']");
                 break;
             case "class":
                 by = By.className(identifier);
+//                by = By.xpath("//*[@class='" + identifier +"']");
                 break;
             case "xpath":
                 by = By.xpath(identifier);
