@@ -1,6 +1,7 @@
 .idea
 .gradle
 build
+.DS_Store
 out
 MindTest.iml
 settings.gradle
